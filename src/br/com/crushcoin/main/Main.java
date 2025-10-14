@@ -24,9 +24,9 @@ public class Main {
 
         CDB meuCDB = new CDB(201, novoUsuario.getUser_id(), new Date(), 5000.00, 1.05, "Banco CrushCoin");
         System.out.println("\nCDB criado:");
-        System.out.println("ID do Investimento: " + meuCDB.getInvestment_id()); // Método herdado
-        System.out.println("Valor aplicado: R$" + meuCDB.getValor());           // Método herdado
-        System.out.println("Banco Emissor: " + meuCDB.getBancoEmissor());     // Atributo específico de CDB
+        System.out.println("ID do Investimento: " + meuCDB.getInvestment_id());
+        System.out.println("Valor aplicado: R$" + meuCDB.getValor());
+        System.out.println("Banco Emissor: " + meuCDB.getBancoEmissor());
 
 
         meuCDB.resgatarInvestimento();
