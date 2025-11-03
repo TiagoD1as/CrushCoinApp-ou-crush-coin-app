@@ -1,4 +1,20 @@
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
 ### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
@@ -34,10 +50,28 @@ bin/
 *.war
 *.ear
 *.log
+*.ctxt
+.mtj.tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
 
 ### Oracle JDBC ###
 ojdbc*.jar
 
-### IDE ###
-.idea/
-*.iml
+### Application Properties (se conter credenciais sensíveis) ###
+# Descomente a linha abaixo se quiser ignorar application.properties
+# src/main/resources/application.properties
+
+### Logs ###
+logs/
+*.log
+
+### Legacy Code ###
+# Código legado movido para pasta legacy/
+# (mantido apenas para referência histórica)
