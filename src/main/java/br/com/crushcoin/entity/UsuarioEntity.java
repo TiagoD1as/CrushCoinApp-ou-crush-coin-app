@@ -1,5 +1,6 @@
 package br.com.crushcoin.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,9 +32,11 @@ public class UsuarioEntity {
 	private String senhaHash;
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnoreProperties("usuario")
 	private List<DespesaEntity> despesas = new ArrayList<>();
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnoreProperties("usuario")
 	private List<InvestimentoEntity> investimentos = new ArrayList<>();
 
 	public UsuarioEntity() {}

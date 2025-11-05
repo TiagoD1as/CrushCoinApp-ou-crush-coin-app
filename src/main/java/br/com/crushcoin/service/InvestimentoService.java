@@ -41,15 +41,17 @@ public class InvestimentoService {
         }
         
         investimento.setUsuario(usuario);
-        return investimentoRepository.save(investimento);
+        InvestimentoEntity investimentoSalvo = investimentoRepository.save(investimento);
+        return investimentoRepository.findByIdWithUsuario(investimentoSalvo.getId())
+                .orElse(investimentoSalvo);
     }
 
     public List<InvestimentoEntity> listarTodos() {
-        return investimentoRepository.findAll();
+        return investimentoRepository.findAllWithUsuario();
     }
 
     public Optional<InvestimentoEntity> buscarPorId(Long id) {
-        return investimentoRepository.findById(id);
+        return investimentoRepository.findByIdWithUsuario(id);
     }
 
     public List<InvestimentoEntity> buscarPorUsuario(Long usuarioId) {
@@ -72,7 +74,7 @@ public class InvestimentoService {
     }
 
     public InvestimentoEntity atualizar(Long id, InvestimentoEntity investimentoAtualizado) {
-        return investimentoRepository.findById(id)
+        return investimentoRepository.findByIdWithUsuario(id)
                 .map(investimento -> {
                     if (investimentoAtualizado.getValor() != null) {
                         if (investimentoAtualizado.getValor().compareTo(BigDecimal.ZERO) <= 0) {
@@ -91,7 +93,9 @@ public class InvestimentoService {
                         investimento.setData(investimentoAtualizado.getData());
                     }
                     
-                    return investimentoRepository.save(investimento);
+                    InvestimentoEntity investimentoSalvo = investimentoRepository.save(investimento);
+                    return investimentoRepository.findByIdWithUsuario(investimentoSalvo.getId())
+                            .orElse(investimentoSalvo);
                 })
                 .orElseThrow(() -> new RuntimeException("Investimento não encontrado com ID: " + id));
     }

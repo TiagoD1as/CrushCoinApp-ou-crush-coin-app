@@ -40,7 +40,9 @@ public class DespesaService {
         }
         
         despesa.setUsuario(usuario);
-        return despesaRepository.save(despesa);
+        DespesaEntity despesaSalva = despesaRepository.save(despesa);
+        return despesaRepository.findByIdWithUsuario(despesaSalva.getId())
+                .orElse(despesaSalva);
     }
 
     public List<DespesaEntity> listarTodas() {
@@ -48,7 +50,7 @@ public class DespesaService {
     }
 
     public Optional<DespesaEntity> buscarPorId(Long id) {
-        return despesaRepository.findById(id);
+        return despesaRepository.findByIdWithUsuario(id);
     }
 
     public List<DespesaEntity> buscarPorUsuario(Long usuarioId) {
@@ -71,7 +73,7 @@ public class DespesaService {
     }
 
     public DespesaEntity atualizar(Long id, DespesaEntity despesaAtualizada) {
-        return despesaRepository.findById(id)
+        return despesaRepository.findByIdWithUsuario(id)
                 .map(despesa -> {
                     if (despesaAtualizada.getValor() != null) {
                         if (despesaAtualizada.getValor().compareTo(BigDecimal.ZERO) <= 0) {
@@ -87,7 +89,9 @@ public class DespesaService {
                         despesa.setDataGasto(despesaAtualizada.getDataGasto());
                     }
                     
-                    return despesaRepository.save(despesa);
+                    DespesaEntity despesaSalva = despesaRepository.save(despesa);
+                    return despesaRepository.findByIdWithUsuario(despesaSalva.getId())
+                            .orElse(despesaSalva);
                 })
                 .orElseThrow(() -> new RuntimeException("Despesa não encontrada com ID: " + id));
     }
