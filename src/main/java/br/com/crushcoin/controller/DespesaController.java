@@ -18,7 +18,6 @@ public class DespesaController {
     @Autowired
     private DespesaService despesaService;
 
-    // GET - Listar todas as despesas
     @GetMapping
     public ResponseEntity<List<DespesaEntity>> listarTodas() {
         try {
@@ -29,7 +28,6 @@ public class DespesaController {
         }
     }
 
-    // GET - Buscar despesa por ID
     @GetMapping("/{id}")
     public ResponseEntity<DespesaEntity> buscarPorId(@PathVariable Long id) {
         try {
@@ -41,7 +39,6 @@ public class DespesaController {
         }
     }
 
-    // GET - Buscar despesas por usuário
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<?> buscarPorUsuario(@PathVariable Long usuarioId) {
         try {
@@ -54,7 +51,6 @@ public class DespesaController {
         }
     }
 
-    // GET - Buscar despesas por período
     @GetMapping("/usuario/{usuarioId}/periodo")
     public ResponseEntity<?> buscarPorPeriodo(
             @PathVariable Long usuarioId,
@@ -70,7 +66,6 @@ public class DespesaController {
         }
     }
 
-    // POST - Criar nova despesa
     @PostMapping("/usuario/{usuarioId}")
     public ResponseEntity<?> criar(@PathVariable Long usuarioId, @RequestBody DespesaEntity despesa) {
         try {
@@ -83,7 +78,6 @@ public class DespesaController {
         }
     }
 
-    // PUT - Atualizar despesa
     @PutMapping("/{id}")
     public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody DespesaEntity despesa) {
         try {
@@ -99,7 +93,6 @@ public class DespesaController {
         }
     }
 
-    // DELETE - Deletar despesa
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         try {

@@ -1,5 +1,6 @@
 package br.com.crushcoin.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -26,6 +27,7 @@ public class DespesaEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "USER_ID", nullable = false)
+	@JsonIgnoreProperties({"despesas", "investimentos", "senhaHash"})
 	private UsuarioEntity usuario;
 
 	@Column(name = "VALOR", nullable = false, precision = 19, scale = 2)

@@ -16,7 +16,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    // GET - Listar todos os usuários
     @GetMapping
     public ResponseEntity<List<UsuarioEntity>> listarTodos() {
         try {
@@ -27,7 +26,6 @@ public class UsuarioController {
         }
     }
 
-    // GET - Buscar usuário por ID
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioEntity> buscarPorId(@PathVariable Long id) {
         try {
@@ -39,7 +37,6 @@ public class UsuarioController {
         }
     }
 
-    // POST - Criar novo usuário
     @PostMapping
     public ResponseEntity<?> criar(@RequestBody UsuarioEntity usuario) {
         try {
@@ -52,7 +49,6 @@ public class UsuarioController {
         }
     }
 
-    // PUT - Atualizar usuário
     @PutMapping("/{id}")
     public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody UsuarioEntity usuario) {
         try {
@@ -68,7 +64,6 @@ public class UsuarioController {
         }
     }
 
-    // DELETE - Deletar usuário
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         try {

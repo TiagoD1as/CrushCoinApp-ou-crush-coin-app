@@ -20,7 +20,6 @@ public class InvestimentoController {
     @Autowired
     private InvestimentoService investimentoService;
 
-    // GET - Listar todos os investimentos
     @GetMapping
     public ResponseEntity<List<InvestimentoEntity>> listarTodos() {
         try {
@@ -31,7 +30,6 @@ public class InvestimentoController {
         }
     }
 
-    // GET - Buscar investimento por ID
     @GetMapping("/{id}")
     public ResponseEntity<InvestimentoEntity> buscarPorId(@PathVariable Long id) {
         try {
@@ -43,7 +41,6 @@ public class InvestimentoController {
         }
     }
 
-    // GET - Buscar investimentos por usuário
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<?> buscarPorUsuario(@PathVariable Long usuarioId) {
         try {
@@ -56,7 +53,6 @@ public class InvestimentoController {
         }
     }
 
-    // GET - Buscar investimentos por período
     @GetMapping("/usuario/{usuarioId}/periodo")
     public ResponseEntity<?> buscarPorPeriodo(
             @PathVariable Long usuarioId,
@@ -72,7 +68,6 @@ public class InvestimentoController {
         }
     }
 
-    // GET - Calcular total de investimentos do usuário
     @GetMapping("/usuario/{usuarioId}/total")
     public ResponseEntity<?> calcularTotal(@PathVariable Long usuarioId) {
         try {
@@ -85,7 +80,6 @@ public class InvestimentoController {
         }
     }
 
-    // POST - Criar novo investimento
     @PostMapping("/usuario/{usuarioId}")
     public ResponseEntity<?> criar(@PathVariable Long usuarioId, @RequestBody InvestimentoEntity investimento) {
         try {
@@ -98,7 +92,6 @@ public class InvestimentoController {
         }
     }
 
-    // PUT - Atualizar investimento
     @PutMapping("/{id}")
     public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody InvestimentoEntity investimento) {
         try {
@@ -114,7 +107,6 @@ public class InvestimentoController {
         }
     }
 
-    // DELETE - Deletar investimento
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         try {
